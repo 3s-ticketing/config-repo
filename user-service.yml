@@ -4,4 +4,13 @@ server:
 spring:
   application:
     name: user-service
-    
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/ticketing
+    username: postgres
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
