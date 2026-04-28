@@ -6,7 +6,7 @@ spring:
     name: user-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5433/ticketing
+    url: jdbc:postgresql://localhost:15432/ticketing
     username: postgres
     password: ${DB_PASSWORD}
 
