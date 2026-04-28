@@ -7,7 +7,7 @@ spring:
 
   datasource:
     url: jdbc:postgresql://localhost:15432/ticketing
-    username: postgres
+    username: ticketing
     password: ${DB_PASSWORD}
 
   jpa:
