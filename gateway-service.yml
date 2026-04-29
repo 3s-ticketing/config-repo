@@ -2,6 +2,12 @@ server:
   port: 8000
 
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:18080/realms/ticketing
+
   cloud:
     gateway:
       server:
@@ -11,3 +17,4 @@ spring:
               uri: lb://USER-SERVICE
               predicates:
                 - Path=/users/**
+                
