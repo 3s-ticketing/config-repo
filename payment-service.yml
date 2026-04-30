@@ -1,39 +1,40 @@
 server:
-  port: ${PAYMENT_PORT:20006}
+  port: ${PAYMENT_PORT:20006}
 
 spring:
-  application:
-    name: payment-service
+  application:
+    name: payment-service
 
-  datasource:
-    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:15432}/${POSTGRES_DB:ticketing}?currentSchema=${PAYMENT_SCHEMA:payment}
-    username: ${POSTGRES_USER:ticketing}
-    password: ${POSTGRES_PASSWORD:change-me-local}
-    driver-class-name: org.postgresql.Driver
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:15432}/${POSTGRES_DB:ticketing}?currentSchema=${PAYMENT_SCHEMA:payment}
+    username: ${POSTGRES_USER:ticketing}
+    password: ${POSTGRES_PASSWORD:change-me-local}
+    driver-class-name: org.postgresql.Driver
 
-  jpa:
-    hibernate:
-      ddl-auto: ${JPA_DDL_AUTO:update}
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        default_schema: ${PAYMENT_SCHEMA:payment}
-        hbm2ddl:
-          create_schemas: true
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:update}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: ${PAYMENT_SCHEMA:payment}
+        hbm2ddl:
+          create_schemas: true
 
-  kafka:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:19092}
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:19092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 eureka:
-  client:
-    enabled: true
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: ${EUREKA_DEFAULT_ZONE:http://localhost:10001/eureka/}
+  client:
+    enabled: true
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://localhost:10001/eureka/}
 
 toss:
-  secret-key: ${TOSS_SECRET_KEY:}
+  secret-key: ${TOSS_SECRET_KEY:}
+  
