@@ -6,14 +6,19 @@ spring:
     name: user-service
 
   datasource:
-    url: jdbc:postgresql://localhost:15432/ticketing
-    username: ticketing
-    password: ${DB_PASSWORD:change-me-local}
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:15432}/${POSTGRES_DB:ticketing}?currentSchema=${USER_SCHEMA:user_service}
+    username: ${POSTGRES_USER:ticketing}
+    password: ${POSTGRES_PASSWORD:${DB_PASSWORD:change-me-local}}
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        default_schema: ${USER_SCHEMA:user_service}
+        hbm2ddl:
+          create_schemas: true
     show-sql: true
 
   security:
