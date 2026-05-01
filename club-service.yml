@@ -5,6 +5,11 @@ spring:
   application:
     name: club-service
 
+  data:
+    jpa:
+      repositories:
+        enabled: false
+
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:15432}/${DB_NAME:ticketing}?currentSchema=${DB_SCHEMA:club_service}
     username: ${DB_USERNAME:ticketing}
@@ -17,6 +22,8 @@ spring:
     properties:
       hibernate:
         default_schema: ${DB_SCHEMA:club_service}
+        hbm2ddl:
+          create_schemas: true
     show-sql: true
 
   kafka:
