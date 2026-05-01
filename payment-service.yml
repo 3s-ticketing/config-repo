@@ -6,9 +6,9 @@ spring:
     name: payment-service
 
   datasource:
-    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:15432}/${POSTGRES_DB:ticketing}?currentSchema=${PAYMENT_SCHEMA:payment}
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:15432}/${POSTGRES_DB:ticketing}?currentSchema=${PAYMENT_SCHEMA:payment_service}
     username: ${POSTGRES_USER:ticketing}
-    password: ${POSTGRES_PASSWORD:change-me-local}
+    password: ${POSTGRES_PASSWORD:${DB_PASSWORD:change-me-local}}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -16,8 +16,7 @@ spring:
       ddl-auto: ${JPA_DDL_AUTO:update}
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        default_schema: ${PAYMENT_SCHEMA:payment}
+        default_schema: ${PAYMENT_SCHEMA:payment_service}
         hbm2ddl:
           create_schemas: true
 
