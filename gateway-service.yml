@@ -21,6 +21,31 @@ spring:
               predicates:
                 - Path=/api/users,/api/users/**,/api/auth,/api/auth/**
 
+            - id: club-service
+              uri: lb://CLUB-SERVICE
+              predicates:
+                - Path=/api/clubs,/api/clubs/**,/api/stadiums,/api/stadiums/**
+
+            - id: match-service
+              uri: lb://MATCH-SERVICE
+              predicates:
+                - Path=/api/matches,/api/matches/**
+
+            - id: seat-service
+              uri: lb://SEAT-SERVICE
+              predicates:
+                - Path=/api/seats,/api/seats/**,/api/seat-grades,/api/seat-grades/**
+
+            - id: reservation-service
+              uri: lb://RESERVATION-SERVICE
+              predicates:
+                - Path=/api/reservations,/api/reservations/**,/api/reservation-seats,/api/reservation-seats/**
+
+            - id: queue-service
+              uri: lb://QUEUE-SERVICE
+              predicates:
+                - Path=/api/queues,/api/queues/**
+
             - id: payment-service
               uri: lb://PAYMENT-SERVICE
               predicates:
