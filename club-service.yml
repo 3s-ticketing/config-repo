@@ -5,6 +5,9 @@ spring:
   application:
     name: club-service
 
+  main:
+    allow-bean-definition-overriding: true
+
   data:
     jpa:
       repositories:
@@ -12,8 +15,8 @@ spring:
 
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:15432}/${DB_NAME:ticketing}?currentSchema=${DB_SCHEMA:club_service}
-    username: ${DB_USERNAME:ticketing}
-    password: ${DB_PASSWORD:ticketing1234}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
