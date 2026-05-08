@@ -9,7 +9,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://keycloak:18080/realms/ticketing
+          issuer-uri: ${JWT_ISSUER_URI:http://localhost:18080/realms/ticketing}
+          jwk-set-uri: ${JWT_JWK_SET_URI:http://keycloak:8080/realms/ticketing/protocol/openid-connect/certs}
 
   cloud:
     gateway:
