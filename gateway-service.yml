@@ -24,37 +24,37 @@ spring:
         webflux:
           routes:
             - id: user-service
-              uri: lb://USER-SERVICE
+              uri: lb://user-service
               predicates:
                 - Path=/api/users,/api/users/**,/api/auth,/api/auth/**
 
             - id: club-service
-              uri: lb://CLUB-SERVICE
+              uri: lb://club-service
               predicates:
                 - Path=/api/clubs,/api/clubs/**,/api/stadiums,/api/stadiums/**
 
             - id: match-service
-              uri: lb://MATCH-SERVICE
+              uri: lb://match-service
               predicates:
                 - Path=/api/matches,/api/matches/**
 
             - id: seat-service
-              uri: lb://SEAT-SERVICE
+              uri: lb://seat-service
               predicates:
                 - Path=/api/seats,/api/seats/**,/api/seat-grades,/api/seat-grades/**
 
             - id: reservation-service
-              uri: lb://RESERVATION-SERVICE
+              uri: lb://reservation-service
               predicates:
                 - Path=/api/reservations,/api/reservations/**,/api/reservation-seats,/api/reservation-seats/**
 
             - id: queue-service
-              uri: lb://QUEUE-SERVICE
+              uri: lb://queue-service
               predicates:
                 - Path=/api/queues,/api/queues/**
 
             - id: payment-service
-              uri: lb://PAYMENT-SERVICE
+              uri: lb://payment-service
               predicates:
                 - Path=/api/payments,/api/payments/**
 
