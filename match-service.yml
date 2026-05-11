@@ -19,8 +19,21 @@ spring:
         default_schema: ${DB_SCHEMA:match_service}
     show-sql: true
 
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:16379}
+
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:19092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: match-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
 eureka:
   client:
@@ -29,4 +42,12 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: ${EUREKA_DEFAULT_ZONE:http://localhost:10001/eureka/}
-      
+
+topics:
+  match:
+    approved: match.approved
+    canceled: match.canceled
+  reservation:
+    seat:
+      reserved: reservation.seat.reserved
+      released: reservation.seat.released
