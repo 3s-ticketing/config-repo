@@ -21,11 +21,17 @@ spring:
           create_schemas: true
     show-sql: true
 
-  data:
+ data:
     redis:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:16379}
-
+      lettuce:
+        pool:
+          enabled: true
+          max-active: 100
+          max-idle: 20
+          min-idle: 5
+          max-wait: 500ms
   flyway:
     enabled: ${FLYWAY_ENABLED:true}
     schemas: ${DB_SCHEMA:reservation_service}
