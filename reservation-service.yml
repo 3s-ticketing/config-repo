@@ -53,4 +53,5 @@ eureka:
 services:
   match:
     url: ${SERVICES_MATCH_URL:match-service:20002}
-    
+  seat:
+    url: ${SERVICES_SEAT_URL:seat-service:20004}
