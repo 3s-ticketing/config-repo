@@ -1,5 +1,5 @@
 server:
-  port: ${QUEUE_PORT:20007}
+  port: ${QUEUE_SERVICE_PORT:${QUEUE_PORT:20007}}
 
 spring:
   application:
@@ -11,7 +11,7 @@ spring:
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:15432}/${DB_NAME:ticketing}?currentSchema=${DB_SCHEMA:queue_service}
     username: ${DB_USERNAME:ticketing}
-    password: ${DB_PASSWORD:ticketing1234}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -20,7 +20,7 @@ spring:
     properties:
       hibernate:
         default_schema: ${DB_SCHEMA:queue_service}
-    show-sql: true
+    show-sql: ${JPA_SHOW_SQL:true}
 
   data:
     redis:
@@ -66,7 +66,7 @@ eureka:
 
 queue:
   token:
-    secret: ${QUEUE_TOKEN_SECRET:test-queue-token-secret}
+    secret: ${QUEUE_TOKEN_SECRET}
 
   outbox:
     scheduler:
@@ -82,5 +82,4 @@ management:
       probability: ${TRACING_SAMPLING_PROBABILITY:0.1}
   zipkin:
     tracing:
-      endpoint: ${ZIPKIN_ENDPOINT:http://localhost:30003/api/v2/spans}
-      
+      endpoint: ${ZIPKIN_ENDPOINT:http://localhost:9411/api/v2/spans}
