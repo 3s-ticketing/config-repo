@@ -49,3 +49,8 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: ${EUREKA_DEFAULT_ZONE:http://localhost:10001/eureka/}
+
+services:
+  match:
+    url: ${SERVICES_MATCH_URL:match-service:20002}
+    
