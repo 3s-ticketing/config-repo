@@ -1,5 +1,5 @@
 server:
-  port: 10000
+  port: ${GATEWAY_PORT:10000}
 
 spring:
   application:
@@ -65,4 +65,3 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: ${EUREKA_DEFAULT_ZONE:http://localhost:10001/eureka/}
-      
