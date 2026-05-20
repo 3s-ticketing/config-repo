@@ -18,6 +18,10 @@ spring:
     username: ${DB_USERNAME:ticketing}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 3
+      minimum-idle: 1
+      connection-timeout: 30000
 
   jpa:
     hibernate:
@@ -39,3 +43,4 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: ${EUREKA_DEFAULT_ZONE:http://localhost:10001/eureka/}
+      
