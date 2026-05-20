@@ -10,6 +10,10 @@ spring:
     username: ${DB_USERNAME:ticketing}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 3
+      minimum-idle: 1
+      connection-timeout: 30000
 
   jpa:
     hibernate:
@@ -40,7 +44,7 @@ spring:
       group-id: match-service
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.common.serialization.StringDeserializer
 
 eureka:
   client:
@@ -58,3 +62,4 @@ topics:
     seat:
       reserved: reservation.seat.reserved
       released: reservation.seat.released
+      
